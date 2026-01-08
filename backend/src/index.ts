@@ -1,31 +1,18 @@
-import express from 'express'
-import { connectToDatabase } from './database/index.js';
-import { FoodRouter } from './routes/food.routes.js';
+import express from "express";
+import { connectToDatabase } from "./database/index.js";
+import { FoodRouter } from "./routes/food.routes.js";
+import { CategoryRouter } from "./routes/category.router.js";
+import cors from "cors";
 
 await connectToDatabase();
-const app = express()
+const app = express();
+app.use(cors());
 
 app.use(express.json());
 
-app.use('/foods', FoodRouter);
-
-// let arr:string[] =[]
-
-// app.get("/", (req,res) => {
-//     res.send(arr)})
-
-// app.post("/", (req,res) => {
-//     const data = req.body;
-//     arr.push(data.value)
-//     res.send("Success")
-// })
-
-// app.put("/", (req,res) => {
-//     const data = req.body;
-//     arr= arr.filter(item => item !==data.value)
-//     res.send("Success")
-// })
+app.use("/foods", FoodRouter);
+app.use("/categories", CategoryRouter);
 
 app.listen(4003, () => {
-    console.log(`Example app listening on port 4003`)
-})
+  console.log(`Example app listening on port 4003`);
+});
