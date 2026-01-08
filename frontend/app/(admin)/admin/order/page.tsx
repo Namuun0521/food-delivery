@@ -125,7 +125,7 @@ export default function Page() {
                   <input type="checkbox" />
                 </TableHead>
                 <TableHead>No</TableHead>
-                <TableHead className="w-[100px]">Costumer</TableHead>
+                <TableHead className="w-25">Costumer</TableHead>
                 <TableHead>Food</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Total</TableHead>
