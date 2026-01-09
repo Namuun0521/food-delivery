@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, X } from "lucide-react";
-import { CartItem } from "../context/cart-context";
+import { CartItem as CartItemType } from "../../context/cart-context";
 
 interface CartItemProps {
   item: CartItemType;
@@ -33,7 +33,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
             >
               <Minus className="h-3 w-3" />
             </Button>
-            <span className="text-sm font-medium min-w-[20px] text-center">
+            <span className="text-sm font-medium min-w-5 text-center">
               {item.quantity}
             </span>
             <Button

@@ -14,6 +14,7 @@ export function FoodCard({ name, price, ingredients, image }: FoodCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative aspect-video">
+        {/* <img src={image} alt={name} className="object-cover" /> */}
         <Image src={image} alt={name} fill className="object-cover" />
         <button className="absolute top-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 shadow-md">
           <Pencil className="w-4 h-4 text-gray-600" />

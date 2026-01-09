@@ -1,3 +1,4 @@
+"use client";
 export const Footer = () => {
   return (
     <div className=" bg-black  px-22 py-25">

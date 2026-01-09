@@ -1,7 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronRight,
+  ShoppingBasket,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 
 interface HeaderProps {
   totalItems: number;
@@ -12,15 +18,7 @@ export function Header({ totalItems, onCartClick }: HeaderProps) {
   return (
     <header className="bg-[#1a1a1a] px-8 py-3 flex items-center justify-between border-b border-gray-800">
       <div className="flex items-center gap-3">
-        <div className="bg-gradient-to-br from-red-500 to-red-600 w-9 h-9 rounded-lg flex items-center justify-center shadow-md">
-          <span className="text-white text-lg font-bold">🍜</span>
-        </div>
-        <div>
-          <h1 className="text-white font-bold text-base leading-none">
-            NomNom
-          </h1>
-          <p className="text-gray-400 text-[10px] mt-0.5">Swift delivery</p>
-        </div>
+        <img src="/Logo Container.png" alt="" />
       </div>
 
       <div className="flex items-center gap-3">
@@ -28,19 +26,12 @@ export function Header({ totalItems, onCartClick }: HeaderProps) {
           variant="outline"
           className="px-4 py-1.5 h-9 bg-white rounded-full text-xs flex items-center gap-2 hover:bg-gray-50 border-none shadow-sm"
         >
-          <span className="text-red-500 text-sm">📍</span>
-          <span className="text-gray-700 font-medium">
-            Delivery address: Add Location
+          <span className="text-red-500 text-sm"> Delivery address:</span>
+          <span className="text-gray-700 font-medium">Add Location</span>
+          <span className="text-gray-400 text-xs">
+            {" "}
+            <ChevronRight />
           </span>
-          <span className="text-gray-400 text-xs">▼</span>
-        </Button>
-
-        <Button
-          size="icon"
-          variant="ghost"
-          className="w-9 h-9 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors"
-        >
-          <span className="text-white text-sm">🔍</span>
         </Button>
 
         <Button
@@ -54,6 +45,16 @@ export function Header({ totalItems, onCartClick }: HeaderProps) {
               {totalItems}
             </span>
           )}
+        </Button>
+        <Button
+          size="icon"
+          variant="ghost"
+          className="w-9 h-9 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors"
+        >
+          <span className="text-white text-sm">
+            {" "}
+            <User />
+          </span>
         </Button>
       </div>
     </header>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Minus, Plus, X } from "lucide-react";
 import { FoodItem } from "./Food-card";
 
@@ -34,7 +34,8 @@ export function FoodDetailDialog({
 
   return (
     <Dialog open={!!food} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-125 p-0 gap-0">
+      <DialogTitle></DialogTitle>
+      <DialogContent className="sm:max-w-210 p-0 gap-0">
         <Button
           variant="ghost"
           size="icon"
@@ -45,8 +46,8 @@ export function FoodDetailDialog({
         </Button>
 
         {food && (
-          <div className="flex flex-col">
-            <div className="relative h-56 w-full">
+          <div className="flex py-6 px-6">
+            <div className="relative w-86">
               <img
                 src={food.image}
                 alt={food.name}
@@ -63,11 +64,12 @@ export function FoodDetailDialog({
               </p>
 
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col justify-between mt-27">
                   <span className="text-gray-700 font-medium text-sm">
                     Total price
                   </span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-xl font-bold">{getTotalPrice()}</span>
                     <div className="flex items-center gap-2 border rounded-full px-1.5 bg-gray-50">
                       <Button
                         variant="ghost"
@@ -77,7 +79,7 @@ export function FoodDetailDialog({
                       >
                         <Minus className="h-3 w-3" />
                       </Button>
-                      <span className="text-base font-semibold min-w-[24px] text-center">
+                      <span className="text-base font-semibold min-w-6 text-center">
                         {quantity}
                       </span>
                       <Button
@@ -89,7 +91,6 @@ export function FoodDetailDialog({
                         <Plus className="h-3 w-3" />
                       </Button>
                     </div>
-                    <span className="text-xl font-bold">{getTotalPrice()}</span>
                   </div>
                 </div>
 

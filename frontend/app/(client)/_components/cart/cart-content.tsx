@@ -1,12 +1,11 @@
 "use client";
 
-import { CartItem as CartItemType } from "@/context/cart-context";
-import { CartItem } from "./cart-item";
 import { EmptyCart } from "./empty-cart";
 import { DeliveryLocation } from "./delivery-location";
 import { PaymentSummary } from "./payment-summary";
 import { Button } from "@/components/ui/button";
-
+import { CartItem as CartItemType } from "../../context/cart-context";
+import { CartItem } from "./cart-item";
 interface CartContentProps {
   cartItems: CartItemType[];
   subtotal: number;

@@ -8,7 +8,9 @@ import { Header } from "./_components/header";
 import { HeroBanner } from "./_components/hero-banner";
 import { FoodGrid } from "./_components/Food-grid";
 import { FoodDetailDialog } from "./_components/Food-detail-dialog";
-import { useCart } from "./_components/context/cart-context";
+import { useCart } from "./context/cart-context";
+import { Footer } from "./_components/Footer";
+import { SubheaderPhoto } from "./_components/SubheaderPhoto";
 
 const foodItems = [
   {
@@ -68,23 +70,23 @@ const foodItems = [
 ];
 
 export default function Home() {
-  // const { addToCart, setIsCartOpen, getTotalItems } = useCart();
-  // const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
+  const { addToCart, setIsCartOpen, getTotalItems } = useCart();
+  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
 
-  // const handleAddToCart = (food: FoodItem, quantity: number) => {
-  //   for (let i = 0; i < quantity; i++) addToCart(food);
-  //   setSelectedFood(null);
-  //   toast.success("Food is being added to the cart!");
-  // };
+  const handleAddToCart = (food: FoodItem, quantity: number) => {
+    for (let i = 0; i < quantity; i++) addToCart(food);
+    setSelectedFood(null);
+    toast.success("Food is being added to the cart!");
+  };
 
   return (
     <div className="min-h-screen bg-[#2a2a2a]">
-      {/* <Header
+      <Header
         totalItems={getTotalItems()}
         onCartClick={() => setIsCartOpen(true)}
       />
 
-      <HeroBanner />
+      <SubheaderPhoto />
 
       <FoodGrid
         title="Appetizers"
@@ -96,7 +98,8 @@ export default function Home() {
         food={selectedFood}
         onClose={() => setSelectedFood(null)}
         onAddToCart={handleAddToCart}
-      /> */}
+      />
+      <Footer />
     </div>
   );
 }
