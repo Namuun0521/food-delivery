@@ -14,14 +14,6 @@ export function CartHeader({ onClose }: CartHeaderProps) {
         <ShoppingCart className="w-5 h-5" />
         <h2 className="text-lg font-semibold">Order detail</h2>
       </div>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-8 w-8 rounded-full"
-        onClick={onClose}
-      >
-        <X className="h-4 w-4" />
-      </Button>
     </div>
   );
 }
