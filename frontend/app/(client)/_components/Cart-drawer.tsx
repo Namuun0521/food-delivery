@@ -1,6 +1,11 @@
 "use client";
 
-import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { CartContent } from "./cart/cart-content";
@@ -28,6 +33,7 @@ export function CartDrawer() {
         <SheetHeader className="px-6 py-4 border-b">
           <CartHeader onClose={() => setIsCartOpen(false)} />
         </SheetHeader>
+        <SheetTitle></SheetTitle>
 
         <Tabs defaultValue="cart" className="flex-1 flex flex-col">
           <TabsList className="w-full rounded-none border-b bg-transparent p-0">

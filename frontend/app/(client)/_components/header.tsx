@@ -8,6 +8,7 @@ import {
   ShoppingCart,
   User,
 } from "lucide-react";
+import { useAuth } from "../context/AuthProvider";
 
 interface HeaderProps {
   totalItems: number;
@@ -15,6 +16,7 @@ interface HeaderProps {
 }
 
 export function Header({ totalItems, onCartClick }: HeaderProps) {
+  const { user } = useAuth();
   return (
     <header className="bg-[#1a1a1a] px-8 py-3 flex items-center justify-between border-b border-gray-800">
       <div className="flex items-center gap-3">
@@ -56,6 +58,7 @@ export function Header({ totalItems, onCartClick }: HeaderProps) {
             <User />
           </span>
         </Button>
+        {user ? <></> : <Button>Login</Button>}
       </div>
     </header>
   );

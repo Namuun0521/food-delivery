@@ -8,9 +8,18 @@ type FoodCardProps = {
   price: number;
   ingredients: string;
   image: string;
+  categoryName: string;
+  // categoryId: string;
 };
 
-export function FoodCard({ name, price, ingredients, image }: FoodCardProps) {
+export function FoodCard({
+  name,
+  price,
+  ingredients,
+  image,
+  categoryName,
+  // categoryId,
+}: FoodCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative aspect-video">

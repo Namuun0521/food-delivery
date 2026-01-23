@@ -44,7 +44,7 @@ const foodFormSchema = z.object({
     },
     {
       message: "Price must be a valid positive number.",
-    }
+    },
   ),
   image: z.string().min(1, {
     message: "Image is required.",
@@ -59,7 +59,7 @@ const foodFormSchema = z.object({
 
 type FoodFormValues = z.infer<typeof foodFormSchema>;
 
-type Category = {
+export type Category = {
   _id: string;
   name: string;
 };
@@ -83,7 +83,7 @@ export const CreateFoodDialog = () => {
   });
 
   const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -96,7 +96,7 @@ export const CreateFoodDialog = () => {
         {
           method: "POST",
           body: file,
-        }
+        },
       );
 
       if (!response.ok) {
@@ -126,12 +126,12 @@ export const CreateFoodDialog = () => {
   };
 
   const onSubmit = async (values: FoodFormValues) => {
-    await api.post("/foods/create", {
+    await api.post("/foods", {
       name: values.name,
       price: parseFloat(values.price),
       ingredients: values.ingredients,
       image: values.image,
-      categoryIds: [values.categoryId],
+      categoryId: [values.categoryId],
     });
 
     form.reset();
@@ -158,7 +158,7 @@ export const CreateFoodDialog = () => {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="w-full h-full flex flex-col gap-4 items-center justify-center p-4"
+          className=" w-52 h-60 flex flex-col gap-4 items-center justify-center p-4"
         >
           <Plus />
           Add New Dish

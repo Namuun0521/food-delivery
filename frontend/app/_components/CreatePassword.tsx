@@ -21,6 +21,7 @@ import { useContext, useRef } from "react";
 import { StepContext } from "../signup/page";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 
 const formSchema = z
   .object({
@@ -145,6 +146,7 @@ export const CreatePassword = () => {
                     Let's Go
                   </Button>
                 </div>
+                <Link href="/auth/login">letsgo</Link>
               </form>
             </Form>
             <div className="flex">

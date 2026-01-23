@@ -1,13 +1,16 @@
 import { model, Schema } from "mongoose";
 
-const userSchema = new Schema({
-username: { type: String, required: true, unique:true},
-email: { type: String, required: true, unique:true},
-password: { type: String, required: true, unique:true},
-profileImage: { type: String, required: false},
-address: { type: String, required: false},
-
-}, {
-    timestamps: true
-});
-export const UserModel = model('User', userSchema)
+const userSchema = new Schema(
+  {
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true, unique: true },
+    profileImage: { type: String, required: false },
+    address: { type: String, required: false },
+    role: { type: String, required: true, default: "costumer" },
+  },
+  {
+    timestamps: true,
+  },
+);
+export const UserModel = model("User", userSchema);
