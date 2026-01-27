@@ -8,11 +8,9 @@ import {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Section1 } from "../_components/Section1";
-import { ForgotPass } from "../_components/ForgotPass";
-import { Verify } from "../_components/Verify";
-import { CreateAccount } from "../_components/CreateAccount";
-import { CreatePassword } from "../_components/CreatePassword";
+import { Section1 } from "../../_components/Section1";
+import { ForgotPass } from "../../_components/ForgotPass";
+import { Verify } from "../../_components/Verify";
 type StepContextType = {
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
@@ -23,19 +21,17 @@ type StepContextType = {
 };
 
 export const StepContext = createContext<StepContextType>(
-  {} as StepContextType
+  {} as StepContextType,
 );
 
 export type Data = {
   email: string;
   password: string;
-  confirmpass: string;
 };
 
 const initValue = {
   email: "",
   password: "",
-  confirmpass: "",
 };
 
 export default function Page() {
@@ -74,8 +70,9 @@ export default function Page() {
       value={{ setStep, handleNext, handleBack, data, setData, step }}
     >
       <div className="h-screen w-screen flex justify-center items-center bg-[#7F7F800D]">
-        <AnimatePresence>{step == 1 && <CreateAccount />}</AnimatePresence>
-        <AnimatePresence>{step == 2 && <CreatePassword />}</AnimatePresence>
+        <AnimatePresence>{step == 1 && <Section1 />}</AnimatePresence>
+        <AnimatePresence>{step == 2 && <ForgotPass />}</AnimatePresence>
+        <AnimatePresence>{step == 3 && <Verify />}</AnimatePresence>
       </div>
     </StepContext.Provider>
   );

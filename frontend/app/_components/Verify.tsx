@@ -18,7 +18,7 @@ import {
 import { ChevronLeft } from "lucide-react";
 
 import { useContext, useRef } from "react";
-import { StepContext } from "../login/page";
+import { StepContext } from "../auth/login/page";
 
 const formSchema = z.object({
   email: z.string().min(2, {
