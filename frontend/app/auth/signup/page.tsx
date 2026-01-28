@@ -85,10 +85,17 @@
 
 import { FirstStep } from "@/app/_components/Firststep";
 import { SecondStep } from "@/app/_components/Secondstep";
+import { useAuth } from "@/app/context/AuthProvider";
+
 import { useState } from "react";
 
 export default function Signup() {
   const [step, setStep] = useState<number>(1);
+
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+
+  const { register: authRegister } = useAuth();
 
   const handleNextStep = () => {
     setStep(2);
@@ -96,10 +103,25 @@ export default function Signup() {
   const handlePrevStep = () => {
     setStep(1);
   };
-
+  const auth = useAuth();
+  console.log("AUTH:", auth);
+  console.log("typeof register:", typeof auth.register);
+  const { register } = auth;
+  console.log("STEP DATA:", { email, username });
   return step === 1 ? (
-    <FirstStep step={step} onNextStep={handleNextStep} />
+    <FirstStep
+      step={step}
+      onNextStep={handleNextStep}
+      setEmail={setEmail}
+      setUsername={setUsername}
+    />
   ) : (
-    <SecondStep step={step} onPrevStep={handlePrevStep} />
+    <SecondStep
+      step={step}
+      onPrevStep={handlePrevStep}
+      register={authRegister}
+      email={email}
+      username={username}
+    />
   );
 }

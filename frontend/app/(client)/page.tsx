@@ -8,9 +8,10 @@ import { Header } from "./_components/header";
 import { HeroBanner } from "./_components/hero-banner";
 import { FoodGrid } from "./_components/Food-grid";
 import { FoodDetailDialog } from "./_components/Food-detail-dialog";
-import { useCart } from "./context/cart-context";
+
 import { Footer } from "./_components/Footer";
 import { SubheaderPhoto } from "./_components/SubheaderPhoto";
+import { useCart } from "../context/cart-context";
 
 const foodItems = [
   {

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { CartDrawer } from "../_components/Cart-drawer";
+import { CartDrawer } from "../(client)/_components/Cart-drawer";
 
 type Food = {
   id: number;
@@ -37,7 +37,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       const existingItem = prevItems.find((i) => i.id === item.id);
       if (existingItem) {
         return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i,
         );
       }
       return [...prevItems, { ...item, quantity: 1 }];
@@ -54,7 +54,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return;
     }
     setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
     );
   };
 

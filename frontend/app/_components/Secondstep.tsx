@@ -17,9 +17,19 @@ import z, { refine } from "zod";
 export const SecondStep = ({
   step,
   onPrevStep,
+  register,
+  email,
+  username,
 }: {
   step: number;
   onPrevStep: () => void;
+  register: (
+    username: string,
+    email: string,
+    password: string,
+  ) => Promise<void>;
+  email: string;
+  username: string;
 }) => {
   const formSchema = z
     .object({
@@ -36,7 +46,7 @@ export const SecondStep = ({
         return values.password === values.confirmpass;
       },
       {
-        message: "Those password did’t match, Try again",
+        message: "Those password did not match, Try again",
         path: ["confirmpass"],
       },
     );
@@ -50,21 +60,14 @@ export const SecondStep = ({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    register(username, email, values.password);
     console.log("agadg");
   }
   return (
     <div className="flex gap-12 justify-center items-center h-screen w-screen">
       <div className="flex flex-col gap-6">
-        {/* <Button onClick={onPrevStep}>
-          <ChevronLeft className="h-9 w-9 text-black text-sm border border-[#E4E4E7]" />
-        </Button> */}
-        <Button
-          className="h-6 w-6 bg-white text-black border border-[#CBD5E1] text-[16px] mb-8 "
-          onClick={onPrevStep}
-          type="button"
-        >
-          {" "}
-          <ChevronLeft />
+        <Button onClick={onPrevStep}>
+          <ChevronLeft className="h-9 w-9" />
         </Button>
         <div className="flex flex-col gap-1">
           <p className="text-[24px] font-semibold">Create a strong password</p>
@@ -118,8 +121,7 @@ export const SecondStep = ({
           </Link>
         </div>
       </div>
-
-      <img src="/Frame 1321316047.png" className="w-214 h-226px " />
+      <img src="/Frame 1321316047.png" className="h-225 w-210 rounded-md" />
     </div>
   );
 };

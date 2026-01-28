@@ -65,6 +65,8 @@
 // }
 "use client";
 
+import { useAuth } from "@/app/context/AuthProvider";
+import { useCart } from "@/app/context/cart-context";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -75,8 +77,6 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
-import { useCart } from "../context/cart-context";
-import { useAuth } from "../context/AuthProvider";
 
 interface HeaderProps {
   totalItems?: number;

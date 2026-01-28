@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CartContent } from "./cart/cart-content";
 
 import { CartHeader } from "./cart/cart-header";
-import { useCart } from "../context/cart-context";
+import { useCart } from "@/app/context/cart-context";
 
 export function CartDrawer() {
   const {
