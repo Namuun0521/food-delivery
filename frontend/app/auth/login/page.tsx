@@ -180,7 +180,7 @@ export default function Login() {
         </div>
 
         <div className="flex gap-3">
-          <p className="text-[#71717A] text-[16px]">Don’t have an account?</p>
+          <p className="text-[#71717A] text-[16px]">Don't have an account?</p>
           <Link href="/auth/signup">
             <p className="text-[16px] text-[#2563EB]">Sign up </p>
           </Link>
