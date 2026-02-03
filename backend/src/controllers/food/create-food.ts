@@ -9,7 +9,7 @@ export const createFood: RequestHandler = async (req, res) => {
     price: body.price,
     image: body.image,
     ingredients: body.ingredients,
-    categoryIds: body.categoryIds,
+    categoryId: body.categoryId,
   });
   res.status(201).json(food);
 };

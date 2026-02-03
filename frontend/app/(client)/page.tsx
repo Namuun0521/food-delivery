@@ -1,84 +1,113 @@
+// "use client";
+
+// import { useState } from "react";
+
+// import { FoodItem } from "./_components/Food-card";
+// import { toast } from "react-toastify";
+// import { Header } from "./_components/header";
+// import { HeroBanner } from "./_components/hero-banner";
+// import { FoodGrid } from "./_components/Food-grid";
+// import { FoodDetailDialog } from "./_components/Food-detail-dialog";
+
+// import { Footer } from "./_components/Footer";
+// import { SubheaderPhoto } from "./_components/SubheaderPhoto";
+// import { useCart } from "../context/cart-context";
+
+// const foodItems = [
+//   {
+//     id: 1,
+//     name: "Finger food",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1541599468348-e96984315921?w=400&h=300&fit=crop",
+//   },
+//   {
+//     id: 2,
+//     name: "Cranberry Brie Bites",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1559058789-672da06263d8?w=400&h=300&fit=crop",
+//   },
+//   {
+//     id: 3,
+//     name: "Sunshine Stackers",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop",
+//   },
+//   {
+//     id: 4,
+//     name: "Brie Crostini Appetizer",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop",
+//   },
+//   {
+//     id: 5,
+//     name: "Sunshine Stackers",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop",
+//   },
+//   {
+//     id: 6,
+//     name: "Grilled chicken",
+//     price: "$12.99",
+//     description:
+//       "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
+//     image:
+//       "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop",
+//   },
+// ];
+
+// export default function Home() {
+//   const { addToCart, setIsCartOpen, getTotalItems } = useCart();
+//   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
+
+//   const handleAddToCart = (food: FoodItem, quantity: number) => {
+//     for (let i = 0; i < quantity; i++) addToCart(food);
+//     setSelectedFood(null);
+//     toast.success("Food is being added to the cart!");
+//   };
 "use client";
 
-import { useState } from "react";
+import { api } from "@/lib/axios";
 
-import { FoodItem } from "./_components/Food-card";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 import { Header } from "./_components/header";
-import { HeroBanner } from "./_components/hero-banner";
-import { FoodGrid } from "./_components/Food-grid";
-import { FoodDetailDialog } from "./_components/Food-detail-dialog";
-
-import { Footer } from "./_components/Footer";
 import { SubheaderPhoto } from "./_components/SubheaderPhoto";
+import { Footer } from "./_components/Footer";
 import { useCart } from "../context/cart-context";
+import { Category } from "../(admin)/admin/_components/CreateFoodDialog";
+import { MenuSection } from "../_components/MenuSection";
 
-const foodItems = [
-  {
-    id: 1,
-    name: "Finger food",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1541599468348-e96984315921?w=400&h=300&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Cranberry Brie Bites",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1559058789-672da06263d8?w=400&h=300&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Sunshine Stackers",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Brie Crostini Appetizer",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop",
-  },
-  {
-    id: 5,
-    name: "Sunshine Stackers",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Grilled chicken",
-    price: "$12.99",
-    description:
-      "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar.",
-    image:
-      "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop",
-  },
-];
+export type MenuSectionType = {
+  id: number;
+  title: string;
+};
 
 export default function Home() {
+  const [categories, setCategories] = useState<Category[]>([]);
   const { addToCart, setIsCartOpen, getTotalItems } = useCart();
-  const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
 
-  const handleAddToCart = (food: FoodItem, quantity: number) => {
-    for (let i = 0; i < quantity; i++) addToCart(food);
-    setSelectedFood(null);
-    toast.success("Food is being added to the cart!");
-  };
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data } = await api.get<Category[]>("/categories");
+      setCategories(data);
+    };
+
+    fetchCategories();
+  });
 
   return (
     <div className="min-h-screen bg-[#2a2a2a]">
@@ -88,7 +117,7 @@ export default function Home() {
       />
 
       <SubheaderPhoto />
-
+      {/* 
       <FoodGrid
         title="Appetizers"
         items={foodItems}
@@ -99,7 +128,14 @@ export default function Home() {
         food={selectedFood}
         onClose={() => setSelectedFood(null)}
         onAddToCart={handleAddToCart}
-      />
+      /> */}
+      {categories.map((el) => (
+        <MenuSection
+          key={el._id}
+          categoryId={el._id}
+          categoryName={el.name}
+        ></MenuSection>
+      ))}
       <Footer />
     </div>
   );

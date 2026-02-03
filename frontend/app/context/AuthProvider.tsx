@@ -218,10 +218,20 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
       localStorage.setItem("accessToken", data.accessToken);
       setUser(data.user);
-      router.push("/");
+      //     router.push("/");
+      //   } catch {
+      //     toast.error("Invalid username or password");
+      //     throw new Error("LOGIN_FAILED"); // optional (debug-д хэрэгтэй)
+      //   }
+      // };
+      if (data.user.role === "admin") {
+        router.replace("/admin"); // replace зөв (back дарвал login руу буцахгүй)
+      } else {
+        router.replace("/"); // эсвэл "/menu" гэх мэт
+      }
     } catch {
       toast.error("Invalid username or password");
-      throw new Error("LOGIN_FAILED"); // optional (debug-д хэрэгтэй)
+      throw new Error("LOGIN_FAILED");
     }
   };
 

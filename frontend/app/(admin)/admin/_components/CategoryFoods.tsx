@@ -28,13 +28,16 @@ export const CategoryFoods = ({
 }: FoodSectionProps) => {
   const [foods, setFoods] = useState<Food[]>([]);
   useEffect(() => {
+    if (!categoryId) return;
+
     const getData = async () => {
       const { data } = await api.get<Food[]>(`/foods/category/${categoryId}`);
       setFoods(data);
     };
 
     getData();
-  }, []);
+  }, [categoryId]);
+
   return (
     <Card className="flex flex-col gap-4 p-4">
       <p>{categoryName}</p>
@@ -50,7 +53,7 @@ export const CategoryFoods = ({
               ingredients={food.ingredients}
               image={food.image}
               categoryName={categoryName}
-              // categoryId={categoryId}
+              categoryId={categoryId}
             />
           ))}
         </div>
