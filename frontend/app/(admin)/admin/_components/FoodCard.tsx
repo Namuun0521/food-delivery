@@ -24,7 +24,7 @@ export function FoodCard({
   categoryId,
 }: FoodCardProps) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow p-4">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow p-4 flex w-67.5 h-60.25 gap-5">
       <div className="relative aspect-video">
         <Image
           src={image}

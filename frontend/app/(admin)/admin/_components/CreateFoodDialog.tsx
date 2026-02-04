@@ -477,7 +477,7 @@ export const CreateFoodDialog = () => {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="w-full h-full flex flex-col gap-4 items-center justify-center p-4"
+          className=" flex w-67.5 h-60.25 gap-4 items-center justify-center p-4"
         >
           <Plus />
           Add New Dish
@@ -493,7 +493,7 @@ export const CreateFoodDialog = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-4 py-4"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-4 gap-4">
               <FormField
                 control={form.control}
                 name="name"

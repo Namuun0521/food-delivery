@@ -39,25 +39,25 @@ export const CategoryFoods = ({
   }, [categoryId]);
 
   return (
-    <Card className="flex flex-col gap-4 p-4">
+    <Card className="flex gap-4 p-4">
       <p>{categoryName}</p>
-      <div className="grid grid-cols-4 gap-4 p-6">
+      <div className="flex flex-wrap gap-4 p-6">
         <CreateFoodDialog />
-        <div>
-          {foods.map((food) => (
-            <FoodCard
-              key={food._id}
-              id={food._id}
-              name={food.name}
-              price={food.price}
-              ingredients={food.ingredients}
-              image={food.image}
-              categoryName={categoryName}
-              categoryId={categoryId}
-            />
-          ))}
-        </div>
+        {/* <div className="flex gap-4"> */}
+        {foods.map((food) => (
+          <FoodCard
+            key={food._id}
+            id={food._id}
+            name={food.name}
+            price={food.price}
+            ingredients={food.ingredients}
+            image={food.image}
+            categoryName={categoryName}
+            categoryId={categoryId}
+          />
+        ))}
       </div>
+      {/* </div> */}
     </Card>
   );
 };
