@@ -4,6 +4,7 @@ import { FoodRouter } from "./routes/food.routes.js";
 import { CategoryRouter } from "./routes/category.router.js";
 import cors from "cors";
 import { AuthRouter } from "./routes/auth.router.js";
+import { UserRouter } from "./routes/user.router.js";
 
 await connectToDatabase();
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/foods", FoodRouter);
 app.use("/categories", CategoryRouter);
 app.use("/auth", AuthRouter);
+app.use("/users", UserRouter);
 
 app.listen(4003, () => {
   console.log(`Example app listening on port 4003`);

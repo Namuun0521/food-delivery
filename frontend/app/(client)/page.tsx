@@ -112,23 +112,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#2a2a2a]">
       <Header
-        totalItems={getTotalItems()}
-        onCartClick={() => setIsCartOpen(true)}
+      // totalItems={getTotalItems()}
+      // onCartClick={() => setIsCartOpen(true)}
       />
 
       <SubheaderPhoto />
-      {/* 
-      <FoodGrid
-        title="Appetizers"
-        items={foodItems}
-        onItemClick={setSelectedFood}
-      />
 
-      <FoodDetailDialog
-        food={selectedFood}
-        onClose={() => setSelectedFood(null)}
-        onAddToCart={handleAddToCart}
-      /> */}
       {categories.map((el) => (
         <MenuSection
           key={el._id}
