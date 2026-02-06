@@ -4,15 +4,18 @@ import { EmptyCart } from "./empty-cart";
 import { DeliveryLocation } from "./delivery-location";
 import { PaymentSummary } from "./payment-summary";
 import { Button } from "@/components/ui/button";
-import { CartItem as CartItemType } from "../../context/cart-context";
+
 import { CartItem } from "./cart-item";
+import { CartItem as CartItemType } from "@/app/context/cart-context";
+import { Changeaddress } from "../Changeaddress";
+
 interface CartContentProps {
   cartItems: CartItemType[];
   subtotal: number;
   shipping: number;
   total: number;
-  onUpdateQuantity: (id: number, quantity: number) => void;
-  onRemoveFromCart: (id: number) => void;
+  onUpdateQuantity: (id: string, quantity: number) => void;
+  onRemoveFromCart: (id: string) => void;
 }
 
 export function CartContent({
@@ -34,7 +37,7 @@ export function CartContent({
           <div className="space-y-4">
             {cartItems.map((item) => (
               <CartItem
-                key={item.id}
+                key={item._id}
                 item={item}
                 onUpdateQuantity={onUpdateQuantity}
                 onRemove={onRemoveFromCart}
