@@ -176,10 +176,10 @@ import Link from "next/link";
 import { Changeaddress } from "./Changeaddress";
 
 export const Header = () => {
-  const { setIsCartOpen, getTotalItems } = useCart();
-  const { user, logout, refreshUser } = useAuth(); // ✅ refreshUser байх ёстой
-  const [open, setOpen] = useState(false);
+  const { getTotalItems, setIsCartOpen } = useCart();
+  const { user, logout, refreshUser } = useAuth();
 
+  const [open, setOpen] = useState(false);
   const totalItems = getTotalItems();
 
   return (
@@ -187,7 +187,6 @@ export const Header = () => {
       <img src="/Logo Container.png" alt="Logo" className="h-11 w-36.5" />
 
       <div className="flex gap-3 items-center">
-        {/* Sign up / Login */}
         {!user && (
           <>
             <Link href="/auth/signup">
@@ -204,12 +203,11 @@ export const Header = () => {
           </>
         )}
 
-        {/* Address dialog */}
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button
               type="button"
-              className="px-4 py-1.5 h-9 bg-white rounded-full text-xs flex items-center gap-2 hover:bg-gray-50 border-none"
+              className="px-4 py-1.5 h-9 bg-white rounded-full text-xs flex items-center gap-2 hover:bg-gray-50"
             >
               <LocationEdit className="text-red-500" />
               <span className="text-red-500">Delivery address:</span>
@@ -237,7 +235,7 @@ export const Header = () => {
         {/* Cart */}
         <Button
           size="icon"
-          className="w-9 h-9 bg-white rounded-full relative"
+          className="w-9 h-9 bg-white rounded-full relative transition-all shadow-md"
           onClick={() => setIsCartOpen(true)}
         >
           <ShoppingCart className="h-4 w-4 text-black" />
@@ -248,7 +246,6 @@ export const Header = () => {
           )}
         </Button>
 
-        {/* User / Logout */}
         {user ? (
           <Button variant="outline" className="text-white" onClick={logout}>
             Hello {user.username}!

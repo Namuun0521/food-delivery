@@ -27,7 +27,7 @@ export const Changeaddress = ({
       setLoading(false);
     }
   };
-
+  // console.log(address);
   return (
     <div className="flex flex-col gap-6">
       <p>Please write your delivery address!</p>

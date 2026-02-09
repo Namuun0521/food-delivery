@@ -595,8 +595,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       });
       setUser(data.user);
     } catch (err) {
-      // ⭐ энд заавал logout хийхгүй! (login дээр саад болдог)
-      console.error("ME FAILED ❌", err);
+      console.error("ME FAILED ", err);
       setUser(null);
       localStorage.removeItem("accessToken");
     } finally {
@@ -619,9 +618,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
       return true;
     } catch (err: any) {
-      console.error("LOGIN STATUS ❌", err?.response?.status);
-      console.error("LOGIN DATA ❌", err?.response?.data);
-      console.error("LOGIN MESSAGE ❌", err?.message);
       toast.error(err?.response?.data?.message ?? "Login failed");
       return false;
     }
@@ -643,10 +639,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     refreshUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ⭐ Auth шалгаж дуусаагүй үед app render хийхгүй байж болно (optional)
   if (isAuthLoading) return null;
 
   return (
