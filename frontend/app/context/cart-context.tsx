@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { CartDrawer } from "../(client)/_components/Cart-drawer";
+import { CartDrawer } from "../(client)/_components/cart/Cart-drawer";
 
 export type Food = {
   _id: string;

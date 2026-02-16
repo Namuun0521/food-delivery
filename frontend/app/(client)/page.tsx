@@ -90,6 +90,7 @@ import { Footer } from "./_components/Footer";
 import { useCart } from "../context/cart-context";
 import { Category } from "../(admin)/admin/_components/CreateFoodDialog";
 import { MenuSection } from "../_components/MenuSection";
+import Marquee from "../_components/Marquee";
 
 export type MenuSectionType = {
   id: number;
@@ -125,6 +126,7 @@ export default function Home() {
           categoryName={el.name}
         ></MenuSection>
       ))}
+      <Marquee />
       <Footer />
     </div>
   );

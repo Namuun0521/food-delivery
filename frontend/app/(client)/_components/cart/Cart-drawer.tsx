@@ -1,17 +1,15 @@
 "use client";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import { CartContent } from "./cart/cart-content";
-
-import { CartHeader } from "./cart/cart-header";
 import { useCart } from "@/app/context/cart-context";
+import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CartHeader } from "./cart-header";
+import { CartContent } from "./cart-content";
+import { OrderContent } from "./Order-Content";
+// import { CartHeader } from "./Cart-header";
+// import { CartContent } from "./Cart-Content";
+// import { useCart } from "@/app/context/Cart-context";
+// import { OrderContent } from "./Order-Content";
 
 export function CartDrawer() {
   const {
@@ -33,19 +31,18 @@ export function CartDrawer() {
         <SheetHeader className="px-6 py-4 border-b">
           <CartHeader onClose={() => setIsCartOpen(false)} />
         </SheetHeader>
-        <SheetTitle></SheetTitle>
 
         <Tabs defaultValue="cart" className="flex-1 flex flex-col">
-          <TabsList className="w-full rounded-none border-b bg-transparent p-0">
+          <TabsList className="w-full rounded-full border-b bg-transparent p-0">
             <TabsTrigger
               value="cart"
-              className="flex-1 rounded-none data-[state=active]:bg-red-500 data-[state=active]:text-white py-3"
+              className="flex-1 rounded-full data-[state=active]:bg-red-500 data-[state=active]:text-white py-3"
             >
               Cart
             </TabsTrigger>
             <TabsTrigger
               value="order"
-              className="flex-1 rounded-none data-[state=active]:bg-red-500 data-[state=active]:text-white py-3"
+              className="flex-1 rounded-full data-[state=active]:bg-red-500 data-[state=active]:text-white py-3"
             >
               Order
             </TabsTrigger>
@@ -66,9 +63,7 @@ export function CartDrawer() {
             value="order"
             className="flex-1 overflow-auto px-6 py-4 mt-0"
           >
-            <div className="flex flex-col items-center justify-center py-12 text-gray-500">
-              <p>No orders yet</p>
-            </div>
+            <OrderContent />
           </TabsContent>
         </Tabs>
       </SheetContent>
