@@ -150,7 +150,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   Table,
   TableBody,
@@ -165,7 +170,6 @@ import { cn } from "@/lib/utils";
 import { Calendar, ChevronDown, ChevronsUpDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SelectStatus } from "../_components/Change-status";
-import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export type OrderContentType = {
   _id: string;
@@ -321,17 +325,30 @@ export default function OrdersPage() {
                     <DialogTrigger asChild>
                       <TableCell
                         className={cn(
-                          "flex justify-between items-center rounded-full h-8 w-24 border px-3 cursor-pointer text-xs font-medium",
+                          "flex justify-between items-center rounded-full h-9 w-30 border px-3 cursor-pointer text-s font-medium",
                           statusPillClass(item.status),
                         )}
                       >
                         {statusLabel(item.status)}
-                        <ChevronsUpDownIcon size={16} className="opacity-70" />
+                        <ChevronsUpDownIcon size={18} className="opacity-70" />
                       </TableCell>
                     </DialogTrigger>
 
                     <DialogContent>
-                      <SelectStatus id={item._id} currentStatus={item.status} />
+                      <DialogTitle></DialogTitle>
+                      <SelectStatus
+                        id={item._id}
+                        currentStatus={item.status}
+                        onUpdated={(newStatus) => {
+                          setOrderedFood((prev) =>
+                            prev.map((o) =>
+                              o._id === item._id
+                                ? { ...o, status: newStatus }
+                                : o,
+                            ),
+                          );
+                        }}
+                      />
                     </DialogContent>
                   </Dialog>
                 </TableRow>

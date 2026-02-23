@@ -1,13 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { InputGroup } from "@/components/ui/input-group";
 
 import { ToastContainer, toast } from "react-toastify";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import {
   Dialog,
   DialogContent,
@@ -16,8 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Label } from "@radix-ui/react-label";
-import Link from "next/link";
+
 import { useState } from "react";
 
 type CardsProps = {

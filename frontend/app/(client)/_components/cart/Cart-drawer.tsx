@@ -1,15 +1,16 @@
 "use client";
 
 import { useCart } from "@/app/context/cart-context";
-import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CartHeader } from "./cart-header";
 import { CartContent } from "./cart-content";
 import { OrderContent } from "./Order-Content";
-// import { CartHeader } from "./Cart-header";
-// import { CartContent } from "./Cart-Content";
-// import { useCart } from "@/app/context/Cart-context";
-// import { OrderContent } from "./Order-Content";
 
 export function CartDrawer() {
   const {
@@ -28,6 +29,7 @@ export function CartDrawer() {
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetContent className="w-full sm:max-w-lg p-0 flex flex-col">
+        <SheetTitle></SheetTitle>
         <SheetHeader className="px-6 py-4 border-b">
           <CartHeader onClose={() => setIsCartOpen(false)} />
         </SheetHeader>

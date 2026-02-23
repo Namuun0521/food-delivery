@@ -6,15 +6,28 @@ import { useState } from "react";
 export const SelectStatus = ({
   id,
   currentStatus,
+  onUpdated,
+  onClose,
 }: {
   id: string;
   currentStatus: string;
+  onUpdated?: (newStatus: string) => void;
+  onClose?: () => void;
 }) => {
   const [status, setStatus] = useState(currentStatus);
+  const [loading, setLoading] = useState(false);
   const toChangeStatus = async () => {
-    await api.put(`/orders/${id}`, {
-      status,
-    });
+    try {
+      setLoading(true);
+
+      await api.put(`/orders/${id}`, {
+        status,
+      });
+      onUpdated?.(status);
+      onClose?.();
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +56,9 @@ export const SelectStatus = ({
           Cancelled
         </Button>
       </div>
-      <Button onClick={() => toChangeStatus()}>Save</Button>
+      <Button disabled={loading} onClick={toChangeStatus}>
+        {loading ? "Saving..." : "Save"}
+      </Button>
     </div>
   );
 };

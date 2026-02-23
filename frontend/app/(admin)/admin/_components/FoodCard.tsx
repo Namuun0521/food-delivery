@@ -1,5 +1,10 @@
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Pencil } from "lucide-react";
 import Image from "next/image";
 import { EditFood } from "./EditFood";
@@ -38,6 +43,8 @@ export function FoodCard({
               <Pencil className="w-4 h-4 text-red-500" />
             </DialogTrigger>
             <DialogContent>
+              <DialogTitle></DialogTitle>
+
               <EditFood
                 name={name}
                 price={price}

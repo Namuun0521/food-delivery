@@ -72,7 +72,7 @@ export const MenuCard = ({
   };
 
   return (
-    <div className="h-85 w-99 flex flex-col bg-white rounded-md w-5 items-center gap-4 pt-4 relative">
+    <div className="h-85 w-99 flex flex-col bg-white rounded-md items-center gap-4 pt-4 relative">
       <img src={image} alt="" className="h-52 w-91 rounded-md" />
       <div className="flex flex-col gap-2 w-91">
         <div className="flex justify-between">

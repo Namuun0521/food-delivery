@@ -1,7 +1,7 @@
 export function HeroBanner() {
   return (
-    <div className="relative h-[220px] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40 z-10"></div>
+    <div className="relative h-55 overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/40 z-10"></div>
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
