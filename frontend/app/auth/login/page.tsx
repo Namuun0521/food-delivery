@@ -167,7 +167,9 @@ export default function Login() {
                   </FormItem>
                 )}
               />
-              <p className="underline text-[14px]">Forgot password ?</p>
+              <Link href="/auth/forgotpass">
+                <p className="underline text-[14px]">Forgot password ?</p>
+              </Link>
 
               <Button
                 className="h-9 w-104 bg-[#18181B] text-white opacity-20 rounded-md"

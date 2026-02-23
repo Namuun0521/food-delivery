@@ -20,7 +20,7 @@ import { useAuth } from "@/app/context/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
 import { Changeaddress } from "../Changeaddress";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export const DeliveryLocation = () => {
   const { user } = useAuth();
@@ -45,6 +45,8 @@ export const DeliveryLocation = () => {
           </Button>
         </DialogTrigger>
         <DialogContent>
+        <DialogTitle></DialogTitle>
+
           <Changeaddress />
         </DialogContent>
       </Dialog>

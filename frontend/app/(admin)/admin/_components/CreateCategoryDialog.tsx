@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
@@ -44,6 +45,7 @@ export const CreateCategoryDialog = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-6">
+        <DialogTitle></DialogTitle>
         <DialogHeader className="text-lg font-semibold">
           Add new Category
         </DialogHeader>
