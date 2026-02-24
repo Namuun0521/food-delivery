@@ -22,14 +22,15 @@ export function OrderHistory({
         <p>{status}</p>
       </div>
       <div className="w-full">
-        {orderItems.map((item) => {
-          return (
-            <div className="flex justify-between">
-              <p>{item.foodId.name}</p>
-              <p>{item.quantity}</p>
-            </div>
-          );
-        })}
+        {orderItems.map((item) => (
+          <div
+            key={item._id ?? item.foodId._id}
+            className="flex justify-between"
+          >
+            <p>{item.foodId.name}</p>
+            <p>{item.quantity}</p>
+          </div>
+        ))}
       </div>
       <div>
         <p>{address}</p>
