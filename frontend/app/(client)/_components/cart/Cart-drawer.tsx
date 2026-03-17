@@ -20,11 +20,16 @@ export function CartDrawer() {
     getTotalPrice,
     isCartOpen,
     setIsCartOpen,
+    clearCart,
   } = useCart();
 
   const subtotal = getTotalPrice();
-  const shipping = 0.99;
+  const shipping = 3000;
   const total = subtotal + shipping;
+  const handleOrderSuccess = () => {
+    clearCart();
+    setIsCartOpen(false);
+  };
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -58,6 +63,7 @@ export function CartDrawer() {
               total={total}
               onUpdateQuantity={updateQuantity}
               onRemoveFromCart={removeFromCart}
+              onOrderSuccess={handleOrderSuccess}
             />
           </TabsContent>
 

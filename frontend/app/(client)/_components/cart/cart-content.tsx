@@ -108,7 +108,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 import { toast } from "sonner";
-import { CartItem as CartItemType } from "@/app/context/cart-context";
+import { CartItem as CartItemType, useCart } from "@/app/context/cart-context";
 import { EmptyCart } from "./empty-cart";
 import { CartItem } from "./cart-item";
 import { PaymentSummary } from "./payment-summary";
@@ -120,7 +120,7 @@ interface CartContentProps {
   total: number;
   onUpdateQuantity: (id: string, quantity: number) => void;
   onRemoveFromCart: (id: string) => void;
-  onOrderSuccess: () => void; // ⭐ Шинээр нэмсэн
+  onOrderSuccess?: () => void; // ⭐ Шинээр нэмсэн
 }
 
 export function CartContent({
@@ -134,9 +134,10 @@ export function CartContent({
 }: CartContentProps) {
   const [delivery, setDelivery] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false); // ⭐ Loading state
+  const { clearCart, setIsCartOpen } = useCart();
 
   const ToOrder = async () => {
-    if (delivery === "") return toast.error("Hayg oruulnuu");
+    if (delivery === "") return toast.error("please add address");
 
     try {
       const response = await api.post(
@@ -158,6 +159,9 @@ export function CartContent({
 
       console.log("✅ Order created:", response.data);
       toast.success("Order created successfully!");
+      clearCart(); // ← Cart арилгах
+      setIsCartOpen(false); // ← Drawer хаах
+      setDelivery(""); // ← Address field цэвэрлэх
 
       // TODO: Cart арилгах функц CartContext-д нэмэх хэрэгтэй
       // Одоохондоо drawer-г хааж байна
